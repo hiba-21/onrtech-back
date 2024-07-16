@@ -20,7 +20,7 @@ app.use(express.json());
 //app.use(cors("*"))
 app.use(
     cors({
-        origin: ["https://onrtech-api.vercel.app"],
+        origin: ["https://onrtech-front.vercel.app"],
         methods: ["GET,POST,DELETE,PUT,PATCH"],
         credentials: true,
     })
