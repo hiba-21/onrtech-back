@@ -1,8 +1,19 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const app = require("./App");
-
-
+import http from 'http';
+ 
+// Create a server object
+const server = http.createServer((req, res) => {
+    // Set the response header
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    // Write some text to the response
+    res.end('Welcome to my simple Node.js app!');
+});
+// Start the server
+server.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
 // DB Connection
 const DBConnectionHandler = require("./Utils/DBconnect");
 DBConnectionHandler();
@@ -36,6 +47,6 @@ app.get("*",(req,res) => {
 });*/
 
 
-app.listen(port, () => {
+/*app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
-});
+});*/

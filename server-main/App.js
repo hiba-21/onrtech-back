@@ -27,11 +27,11 @@ app.use(cors("*"))
     })
 );*/
 
-// Configuration de multer pour vérifier et créer le répertoire d'uploads si nécessaire
+/* Configuration de multer pour vérifier et créer le répertoire d'uploads si nécessaire
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
-}
+}*/
 
 
 // Custom Middlewares
