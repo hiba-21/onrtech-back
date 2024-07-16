@@ -16,15 +16,16 @@ const disPath = path.join(__dirname,"../client-main/dist");
 app.get("/*",(req,res) => {
     res.sendFile("index.html",{root : disPath})
 });*/
+app.use(express.static(path.join(__dirname, "./public", "../public")));
 app.use(express.json());
-//app.use(cors("*"))
-app.use(
+app.use(cors("*"))
+/*app.use(
     cors({
         origin: ["https://onrtech-front.vercel.app"],
         methods: ["GET,POST,DELETE,PUT,PATCH"],
         credentials: true,
     })
-);
+);*/
 
 // Configuration de multer pour vérifier et créer le répertoire d'uploads si nécessaire
 const uploadDir = path.join(__dirname, 'uploads');
