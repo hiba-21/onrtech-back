@@ -1,19 +1,17 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const app = require("./App");
-import http from 'http';
+const serverless = require('serverless-http');
+const express = require('express');
+
+const app = express();
  
-// Create a server object
-const server = http.createServer((req, res) => {
-    // Set the response header
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    // Write some text to the response
-    res.end('Welcome to my simple Node.js app!');
-});
-// Start the server
-server.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+app.use(cors("*"));
+
+const handler = serverless(app, { provider: 'azure' });
+module.exports.funcName = async (context, req) => {
+  context.res = await handler(context, req);
+}
 // DB Connection
 const DBConnectionHandler = require("./Utils/DBconnect");
 DBConnectionHandler();
