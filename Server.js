@@ -6,7 +6,11 @@ const express = require('express');
 
 const app = express();
  
-app.use(cors("*"));
+app.use(cors({
+    origin: ["https://onrtech-front.vercel.app"],
+    methods: ["GET,POST,DELETE,PUT,PATCH"],
+    credentials: true,
+}));
 
 const handler = serverless(app, { provider: 'azure' });
 module.exports.funcName = async (context, req) => {
